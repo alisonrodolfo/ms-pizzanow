@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/custumer")
+@RequestMapping("/api/v1/customer")
 public class CoreRestController {
     /* Created by Alison on 28/02/2022 */
 
