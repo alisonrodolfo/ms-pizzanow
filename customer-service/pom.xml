@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.restaurante</groupId>
-    <artifactId>custumer-service</artifactId>
+    <artifactId>customer-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>custumer-service</name>
-    <description>custumer-service</description>
+    <name>customer-service</name>
+    <description>customer-service</description>
     <properties>
         <java.version>11</java.version>
         <spring-boot-admin.version>2.6.2</spring-boot-admin.version>
@@ -85,6 +85,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        
     </dependencies>
     <dependencyManagement>
         <dependencies>

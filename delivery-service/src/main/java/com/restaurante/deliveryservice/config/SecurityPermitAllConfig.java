@@ -5,7 +5,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * @author https://github.com/alisonrodolfo
+ * The type Security permit all config.
+ *
+ * @author https ://github.com/alisonrodolfo
  */
 @Configuration
 public class SecurityPermitAllConfig extends WebSecurityConfigurerAdapter {

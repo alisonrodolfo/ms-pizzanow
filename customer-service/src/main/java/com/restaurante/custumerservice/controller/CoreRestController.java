@@ -14,7 +14,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author https://github.com/alisonrodolfo
+ * The type Core rest controller.
+ *
+ * @author https ://github.com/alisonrodolfo
  */
 @Slf4j
 @RestController
@@ -25,13 +27,25 @@ public class CoreRestController {
     @Autowired
     private CustomerRepository customerRepository;
 
+    /**
+     * Gets all customers.
+     *
+     * @return the all customers
+     */
     @GetMapping("/getall")
     public List<CustomerModel> getAllCustomers() {
         return customerRepository.findAll();
     }
 
+    /**
+     * Gets customer by id.
+     *
+     * @param customerId the customer id
+     * @return the customer by id
+     * @throws ResourceNotFoundException the resource not found exception
+     */
     @GetMapping("/get/{id}")
-    public ResponseEntity< CustomerModel > getCustomerById(@PathVariable(value = "id") Long customerId)
+    public ResponseEntity<CustomerModel> getCustomerById(final @PathVariable(value = "id") Long customerId)
             throws ResourceNotFoundException {
         CustomerModel customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found :: " + customerId));
@@ -39,14 +53,28 @@ public class CoreRestController {
         return ResponseEntity.ok().body(customer);
     }
 
+    /**
+     * Create customer customer model.
+     *
+     * @param customer the customer
+     * @return the customer model
+     */
     @PostMapping("/add")
-    public CustomerModel createCustomer(@Validated @RequestBody CustomerModel customer) {
+    public CustomerModel createCustomer(final @Validated @RequestBody CustomerModel customer) {
         return customerRepository.save(customer);
     }
 
+    /**
+     * Update customer response entity .
+     *
+     * @param customerId      the customer id
+     * @param customerDetails the customer details
+     * @return the response entity
+     * @throws ResourceNotFoundException the resource not found exception
+     */
     @PutMapping("/update/{id}")
-    public ResponseEntity < CustomerModel > updateCustomer(@PathVariable(value = "id") Long customerId,
-                                                      @Validated @RequestBody CustomerModel customerDetails) throws ResourceNotFoundException {
+    public ResponseEntity <CustomerModel> updateCustomer(final @PathVariable(value = "id") Long customerId,
+                                                         final @Validated @RequestBody CustomerModel customerDetails) throws ResourceNotFoundException {
         CustomerModel customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found for this id :: " + customerId));
 
@@ -56,14 +84,21 @@ public class CoreRestController {
         return ResponseEntity.ok(updateCustomer);
     }
 
+    /**
+     * Delete customer map.
+     *
+     * @param customerId the customer id
+     * @return the map
+     * @throws ResourceNotFoundException the resource not found exception
+     */
     @DeleteMapping("/delete/{id}")
-    public Map< String, Boolean > deleteCustomer(@PathVariable(value = "id") Long customerId)
+    public Map<String, Boolean> deleteCustomer(final @PathVariable(value = "id") Long customerId)
             throws ResourceNotFoundException {
         CustomerModel customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found for this id :: " + customerId));
 
         customerRepository.delete(customer);
-        Map< String, Boolean > response = new HashMap< >();
+        Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;
     }

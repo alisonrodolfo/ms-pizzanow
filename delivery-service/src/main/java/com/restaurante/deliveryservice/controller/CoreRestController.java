@@ -13,7 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author https://github.com/alisonrodolfo
+ * The type Core rest controller.
+ *
+ * @author https ://github.com/alisonrodolfo
  */
 @RestController
 @RequestMapping("/api/v1/delivery")
@@ -23,11 +25,23 @@ public class CoreRestController {
     @Autowired
     private DeliveryRepository deliveryservice;
 
+    /**
+     * Gets all deliveries.
+     *
+     * @return the all deliveries
+     */
     @GetMapping("/getall")
     public List<DeliveryModel> getAllDeliveries() {
         return deliveryservice.findAll();
     }
 
+    /**
+     * Gets delivery by id.
+     *
+     * @param deliveryId the delivery id
+     * @return the delivery by id
+     * @throws ResourceNotFoundException the resource not found exception
+     */
     @GetMapping("/get/{id}")
     public ResponseEntity< DeliveryModel > getDeliveryById(@PathVariable(value = "id") Long deliveryId)
             throws ResourceNotFoundException {
@@ -36,11 +50,25 @@ public class CoreRestController {
         return ResponseEntity.ok().body(delivery);
     }
 
+    /**
+     * Create delivery delivery model.
+     *
+     * @param delivery the delivery
+     * @return the delivery model
+     */
     @PostMapping("/add")
     public DeliveryModel createDelivery(@Validated @RequestBody DeliveryModel delivery) {
         return deliveryservice.save(delivery);
     }
 
+    /**
+     * Update delivery response entity .
+     *
+     * @param deliveryId      the delivery id
+     * @param deliveryDetails the delivery details
+     * @return the response entity
+     * @throws ResourceNotFoundException the resource not found exception
+     */
     @PutMapping("/update/{id}")
     public ResponseEntity < DeliveryModel > updateDelivery(@PathVariable(value = "id") Long deliveryId,
                                                       @Validated @RequestBody DeliveryModel deliveryDetails) throws ResourceNotFoundException {
@@ -56,6 +84,13 @@ public class CoreRestController {
         return ResponseEntity.ok(updateDelivery);
     }
 
+    /**
+     * Delete delivery map.
+     *
+     * @param deliveryId the delivery id
+     * @return the map
+     * @throws ResourceNotFoundException the resource not found exception
+     */
     @DeleteMapping("/delete/{id}")
     public Map< String, Boolean > deleteDelivery(@PathVariable(value = "id") Long deliveryId)
             throws ResourceNotFoundException {

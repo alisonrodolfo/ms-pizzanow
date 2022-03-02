@@ -5,7 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author https://github.com/alisonrodolfo
+ * The interface Delivery repository.
+ *
+ * @author https ://github.com/alisonrodolfo
  */
 @Repository
 public interface DeliveryRepository extends JpaRepository<DeliveryModel, Long> {

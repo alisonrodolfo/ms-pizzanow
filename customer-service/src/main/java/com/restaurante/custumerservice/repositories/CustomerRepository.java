@@ -5,7 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author https://github.com/alisonrodolfo
+ * The interface Customer repository.
+ *
+ * @author https ://github.com/alisonrodolfo
  */
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerModel, Long> {

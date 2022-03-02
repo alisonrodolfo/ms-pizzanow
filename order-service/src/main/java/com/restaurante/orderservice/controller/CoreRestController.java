@@ -13,7 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author https://github.com/alisonrodolfo
+ * The type Core rest controller.
+ *
+ * @author https ://github.com/alisonrodolfo
  */
 @RestController
 @RequestMapping("/api/v1/order")
@@ -23,11 +25,23 @@ public class CoreRestController {
     @Autowired
     private OrderRepository orderRepository;
 
+    /**
+     * Gets all orders.
+     *
+     * @return the all orders
+     */
     @GetMapping("/getall")
     public List<OrderModel> getAllOrders() {
         return orderRepository.findAll();
     }
 
+    /**
+     * Gets orders by id.
+     *
+     * @param orderId the order id
+     * @return the orders by id
+     * @throws ResourceNotFoundException the resource not found exception
+     */
     @GetMapping("/get/{id}")
     public ResponseEntity< OrderModel > getOrdersById(@PathVariable(value = "id") Long orderId)
             throws ResourceNotFoundException {
@@ -36,11 +50,25 @@ public class CoreRestController {
         return ResponseEntity.ok().body(order);
     }
 
+    /**
+     * Create order order model.
+     *
+     * @param order the order
+     * @return the order model
+     */
     @PostMapping("/add")
     public OrderModel createOrder(@Validated @RequestBody OrderModel order) {
         return orderRepository.save(order);
     }
 
+    /**
+     * Update order response entity .
+     *
+     * @param orderId      the order id
+     * @param orderDetails the order details
+     * @return the response entity
+     * @throws ResourceNotFoundException the resource not found exception
+     */
     @PutMapping("/update/{id}")
     public ResponseEntity < OrderModel > updateOrder(@PathVariable(value = "id") Long orderId,
                                                 @Validated @RequestBody OrderModel orderDetails) throws ResourceNotFoundException {
@@ -54,6 +82,13 @@ public class CoreRestController {
         return ResponseEntity.ok(updateCustomer);
     }
 
+    /**
+     * Delete order map.
+     *
+     * @param orderId the order id
+     * @return the map
+     * @throws ResourceNotFoundException the resource not found exception
+     */
     @DeleteMapping("/delete/{id}")
     public Map< String, Boolean > deleteOrder(@PathVariable(value = "id") Long orderId)
             throws ResourceNotFoundException {

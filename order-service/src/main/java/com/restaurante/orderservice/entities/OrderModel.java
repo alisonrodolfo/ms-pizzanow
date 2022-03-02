@@ -10,7 +10,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * @author https://github.com/alisonrodolfo
+ * The type Order model.
+ *
+ * @author https ://github.com/alisonrodolfo
  */
 @Getter
 @Setter

@@ -3,7 +3,9 @@ package com.restaurante.deliveryservice.exception;
 import java.util.Date;
 
 /**
- * @author https://github.com/alisonrodolfo
+ * The type Error details.
+ *
+ * @author https ://github.com/alisonrodolfo
  */
 public class ErrorDetails {
     /* Created by Alison on 28/02/2022 */
@@ -12,6 +14,13 @@ public class ErrorDetails {
     private String message;
     private String details;
 
+    /**
+     * Instantiates a new Error details.
+     *
+     * @param timestamp the timestamp
+     * @param message   the message
+     * @param details   the details
+     */
     public ErrorDetails(Date timestamp, String message, String details) {
         super();
         this.timestamp = timestamp;
@@ -19,14 +28,29 @@ public class ErrorDetails {
         this.details = details;
     }
 
+    /**
+     * Gets timestamp.
+     *
+     * @return the timestamp
+     */
     public Date getTimestamp() {
         return timestamp;
     }
 
+    /**
+     * Gets message.
+     *
+     * @return the message
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * Gets details.
+     *
+     * @return the details
+     */
     public String getDetails() {
         return details;
     }
